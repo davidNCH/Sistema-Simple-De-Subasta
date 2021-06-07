@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}-Mis Posts{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for post in posts %}
+                    <div class="bg-white rounded p-3 my-3" onclick="window.location.href='{{ path('misPosts',{id:post.id}) }}'" style="cursor: pointer">
+                        <h3>{{ post.titulo }}</h3>
+                        <div class="my-3 bg-yellow"> <i class="fa fa-user"></i><strong> Publicado por  : &nbsp; {{post.user.nombre}}</strong></div>
+                        <div class=" bg-green"><i class="far fa-cookie-bite"></i> <strong>Especificaciones  : &nbsp;{{ post.contenido}} </strong></div>
+                        <div class=" bg-green"><i class="far fa-money-bill"></i> <strong>Precio  : &nbsp;{{ post.precioinicial}} </strong></div>
+                        <div class=" bg-green"><i class="far fa-contao"></i> <strong>Precio Final  : &nbsp;{{ post.preciofinal}} </strong></div>
+
+
+                        <div class="p-2 bd-highlight">
+                        <div class="align-self-center">
+                            <img class="rounded" src="{{ asset('uploads/photos/'~post.foto) }}" width="500px" alt="no se cargo">
+                            <div class=" bg-green"><i class="far fa-monument"></i> <strong>Fecha de publicación  :  &nbsp;{{ post.fechapublicacion | date }}</strong></div>
+
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-4"> </div>
+            <div class="col-md-4"> </div>
+        </div>
+    </div>
+{% endblock %}

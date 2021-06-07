@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'signikabold';
+    src: url('../fonts/signika-bold-webfont.woff2') format('woff2'),
+         url('../fonts/signika-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../fonts/signika-regular-webfont.woff2') format('woff2'),
+    url('../fonts/signika-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'remachine_script_personal_uRg';
+    src: url('../fonts/remachinescript_personal_use-webfont.woff2') format('woff2'),
+    url('../fonts/remachinescript_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    /*
+    background-image: url("../img/fondo1.jpg");  ESTO ERA DE FONDO QUE TENIA YO  PUSE DE FONDO DE COLOR NO QUIERO IMG
+    background-repeat: no-repeat;*/
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    background-size: 100%;
+    background-attachment: fixed;
+    font-family: signikaregular;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: signikabold;
+    color: #dc3545;
+}
+
+.navbar{
+    background-color: #153B36 !important;
+    font-family: signikabold;
+    font-size: 1.5em;
+}
+
+.navbar-brand{
+    font-family: signikabold !important;
+    font-size: 1em;
+    color: #ffd271 !important;
+}
+
+.nav-link{
+    color: #ffd271 !important;
+}
+
+.fa-user, .bg-yellow {
+    color: #6c757d;
+    font-size: 1.3em;
+}
+.fa-clock, .bg-green{
+    color: #6c757d;
+    font-size: 1.3em;
+}
+
+.cursor:hover{
+    cursor: pointer;
+}
+/*.tablaprincipal+ .tabla
+{
+    margin-right: 10%;
+}
+.tablaprincipal .tabla thead th td
+{
+    width: 50%;
+}
+
+*/

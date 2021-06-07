@@ -1,0 +1,78 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}Mis posts{% endblock %}
+{% block body %}
+    {{ parent() }}
+    {% set LikesDeEstePost = post.likes | split(',') %}
+    <div class="container bg-white rounded my-3 p-4">
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                <h3>{{post.titulo}}</h3>
+                <div class="my-3" style="color:#3282b8;" onclick="MeGusta({{ post.id }})">
+                    <i class="fa fa-thumbs-up"></i><strong>
+                         {% if app.user.id in  LikesDeEstePost %}
+                             <img src="{{ asset('img/favorito.svg') }}" alt="me gusta" height="50px">
+                        {%else %}
+                                <img src="{{ asset('img/me-gusta.svg') }}" alt="te gusta esto" height="50px">
+                         {% endif %}
+
+                    </strong>
+                </div>
+                <div class="my-3" style="color:#3282b8;" onclick="MeGusta({{ post.id }})">
+                    <i class="fa fa-thumbs-up"></i><strong>
+                        {% if app.user.id in  LikesDeEstePost %}
+
+                        {% endif %}
+
+                    </strong>
+                </div>
+                <div style="color:#c3f584;">
+                    <div class=" bg-green"><i class="far fa-clock"></i> <strong>Precios Inicial : &nbsp;{{ post.precioinicial}} </strong></div>
+                    <div class=" bg-green"><i class="far fa-clock"></i> <strong>Precio Final : &nbsp; {{ post.preciofinal}} </strong></div>
+                    <div class="bg-green"><i class="far fa-clock"></i> <strong>Fecha de publicación : &nbsp;  {{ post.fechapublicacion | date }}</strong></div>
+
+                </div>
+            </div>
+            <div class="p-2 bd-highlight">
+                <div class="align-self-center">
+                    <img class="rounded" src="{{ asset('uploads/photos/'~post.foto) }}" width="500px" alt="no se cargo">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-justify my-3">
+            <h3>Especificaciones</h3>
+            {{ post.contenido }}
+        </div>
+        <div>
+            <a href="{{ path('comprador') }}" class="btn btn-success">Comprar</a>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container p-3">
+        {{ form(form) }}
+        <h3>Puja De Precios De La Subasta</h3>
+        {% for comentario in comentarios %}
+            <div class="rounded bg-white my-2 p-3 border">
+                <h5>{{ comentario.nombre }} Dice : </h5>
+                <div class="w-100">{{ comentario.comentario }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="navigation">
+            {{ knp_pagination_render(comentarios) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/ajax-call.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Frikili!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+           <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+           <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
+
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}
+
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{{ path('dashboard') }}">Subastas Recientes</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('registrarpost') }}">Crear Subasta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('misPosts') }}">Mis Subastas</a>
+                        </li>
+
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <a href="{{ path('app_logout') }}"><img src="{{ asset('img/cerrar-sesion.svg') }}" alt="cerrar sesion" height="50px"> </a>
+                        <p>&nbsp;&nbsp;</p>
+                    </form>
+                </div>
+            </nav>
+        {% endblock %}
+
+    </body>
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+</html>

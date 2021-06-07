@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Comprador{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-5 bg-white rounded my-5 p-7">
+                <h1 style="text-align:center"> Comprar El Producto</h1>
+                    {{ form(form) }}
+                <a class="btn btn-danger btn-xs"  href="{{ path('dashboard') }}"><i class="fa fa-backward"></i>Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

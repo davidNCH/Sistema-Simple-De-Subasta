@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/EstiloCrud.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css')  }}"  type="text/css"/>
+{% endblock %}
+
+{% block body %}
+<div style="margin-left: 15%">
+    <a href="{{ path('app_logout') }}"><img src="{{ asset('img/cerrar-sesion.svg') }}" alt="cerrar sesion" height="50px"> </a>
+</div>
+<div class="tablaprincipal">
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Baneado</th>
+                <th>Nombre</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.baneado }}</td>
+                <td>{{ user.nombre }}</td>
+                <td>
+                    <a  class="linkver" href="{{ path('user_show', {'id': user.id}) }}">ver</a>
+                    <p>&nbsp;&nbsp;</p>
+                    <a class="linkeditar" href="{{ path('user_edit', {'id': user.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no  hay registro</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="linkcrearnuevo" href="{{ path('user_new') }}">Crear Nuevo</a>
+</div>
+{% endblock %}

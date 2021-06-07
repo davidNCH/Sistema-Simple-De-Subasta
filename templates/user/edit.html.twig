@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Usuario{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/EstiloCrud.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css')  }}"  type="text/css"/>
+{% endblock %}
+{% block body %}
+    <h1 class="h1titulosdepaginas">Editar Usuario</h1>
+    {{ include('user/_form.html.twig', {'button_label': 'update'}) }}
+    <a class="botonregresar" href="{{ path('user_index') }}">Regresar</a>
+{% endblock %}

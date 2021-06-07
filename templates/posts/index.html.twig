@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}-Posts{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-9 bg-white rounded my-5 p-7">
+                <h1 style="text-align:center"> Crear Nuevo Subasta</h1>
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio de Sesion{% endblock %}
+
+{% block body %}
+
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-6 bg-white rounded my-3 p-5">
+                <img src="{{ asset('img/subasta.png') }}" alt="logo" width="500px">
+                <form method="post">
+                    <label for="inputEmail">Usuario</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Contraseña</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}">
+
+                    {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    #}
+                    <div><a href="{{ path('registro') }}" class="btn btn-success" style="margin-left: 18%">Registrarme</a>
+                     <button class="btn btn-primary btn-lg" type="submit" style="display:inline-flex; margin-top:2%;margin-left: 10%; height: 38px">Acceder</button>
+                    </div>
+
+                    {% if last_username =='admin@gmail.com' %}
+                        <a href="{{ path('user_index')}}" class=""> <img src="{{ asset('img/usuario.svg')}}" alt="configuracion" height="50px">
+                        </a>
+                        <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}">
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            tu nombre de usuario es : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Cerrar Sesion</a>
+                        </div>
+                    {% endif %}
+
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

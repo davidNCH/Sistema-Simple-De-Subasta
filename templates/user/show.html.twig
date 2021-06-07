@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/EstiloCrud.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css')  }}"  type="text/css"/>
+{% endblock %}
+{% block body %}
+<div class="tabladeeditar">
+
+    <table id="tabladiseño" class="tabla">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user    .roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Baneado</th>
+                <td>{{ user.baneado }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ user.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="diveditar">
+    <a class="botonregresar" href=" {{ path('user_index') }}">Regresar</a>
+    <a class="botoneditar" href="{{ path('user_edit', {'id': user.id}) }}">Editar</a>
+    {{ include('user/_delete_form.html.twig') }}
+</div>
+{% endblock %}
